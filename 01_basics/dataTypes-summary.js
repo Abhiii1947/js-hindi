@@ -12,9 +12,26 @@ let myObj = {
 }
 
 const myFunction = function(){
-    console.log("Hello World");
+    // console.log("Hello World");
 }
 
-console.log(typeof bigNumber);
-console.log(typeof myFunction);
-console.log(typeof heros);
+// console.log(typeof bigNumber);
+// console.log(typeof myFunction);
+// console.log(typeof heros);
+
+
+//*************************************
+
+//Stack(Primitive) , Heap(Non-Primitive)
+
+let userOne = {
+    email : "user@google.com",
+    upi : "user@ybl"
+}
+
+let userTwo = userOne  //Address is Allocated
+
+userTwo.email = "abhishek@google.com"
+
+console.log(userOne.email);
+console.log(userTwo.email);
