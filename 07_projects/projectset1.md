@@ -201,7 +201,7 @@ function newGame() {
 
 
 
-## Project 5
+## Project 6
 
 ```javascript
 // generate a random color
