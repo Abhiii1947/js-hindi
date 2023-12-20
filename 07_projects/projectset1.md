@@ -206,41 +206,6 @@ function newGame() {
 ```javascript
 // generate a random color
 
-const randomColor = function () {
-  const hex = '0123456789ABCDEF';
-  color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += hex[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
-
-const startChangingColor = function () {
-  const randomColorId = randomColor();
-  document.body.style.backgroundColor = randomColor();
-  console.log(randomColor());
-};
-
-const stopChangingColor = function (colorId) {
-  clearInterval(colorId);
-};
-
-let colorId;
-
-document.querySelector('#start').addEventListener('click', function () {
-  // const randomId = randomColor();
-  colorId = setInterval(startChangingColor, 1000);
-});
-
-document.querySelector('#stop').addEventListener('click', function () {
-  stopChangingColor(colorId);
-  console.log('Stopped');
-});
-
-
-//     OR
-
-
 // generate a random color
 
 const randomColor = function () {
@@ -255,7 +220,9 @@ const randomColor = function () {
 let intervalId;
 
 const startChangingColor = function () {
-  intervalId = setInterval(changeBgColor, 1000);
+  if (!intervalId) {
+    intervalId = setInterval(changeBgColor, 1000);
+  }
   function changeBgColor() {
     document.body.style.backgroundColor = randomColor();
     console.log(randomColor());
@@ -264,11 +231,13 @@ const startChangingColor = function () {
 
 const stopChangingColor = function () {
   clearInterval(intervalId);
+  intervalId = null;
   console.log('Stopped');
 };
 
 document.querySelector('#start').addEventListener('click', startChangingColor);
 
 document.querySelector('#stop').addEventListener('click', stopChangingColor);
+
 
 ```
